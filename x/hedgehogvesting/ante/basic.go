@@ -7,10 +7,9 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/x/auth/ante"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/timnhanta/ugdvesting/x/dex/types"
+	"github.com/timnhanta/ugdvesting/x/hedgehogvesting/types"
 )
 
 // ValidateBasicDecorator will call tx.ValidateBasic and return any non-nil error.
@@ -18,8 +17,7 @@ import (
 // ValidateBasicDecorator decorator will not get executed on ReCheckTx since it
 // is not dependent on application state.
 type ValidateBasicDecorator struct {
-	accountKeeper ante.AccountKeeper
-	bankKeeper    bankkeeper.Keeper
+	bankKeeper bankkeeper.Keeper
 }
 
 type MyError struct{}
@@ -28,10 +26,9 @@ const (
 	denom = "ugd"
 )
 
-func NewValidateBasicDecorator(ak ante.AccountKeeper, bk bankkeeper.Keeper) ValidateBasicDecorator {
+func NewValidateBasicDecorator(bk bankkeeper.Keeper) ValidateBasicDecorator {
 	return ValidateBasicDecorator{
-		accountKeeper: ak,
-		bankKeeper:    bk,
+		bankKeeper: bk,
 	}
 }
 
@@ -52,7 +49,6 @@ func (vbd ValidateBasicDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulat
 	defer file.Close()
 	log.SetOutput(file)
 
-	//log.Println("GetMsgs: ", tx.GetMsgs())
 	for _, msg := range tx.GetMsgs() {
 		if msgBank, ok := msg.(*banktypes.MsgSend); ok {
 			log.Println("------------")
@@ -67,21 +63,6 @@ func (vbd ValidateBasicDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulat
 			if err != nil {
 				log.Fatal(err)
 			}
-
-			//keeper.Keeper.GetBalance(ctx,addr, "")
-			//bank.
-			//ctx.
-			//types.BankKeeper.GetBalance()
-			//vbd.bankKeeper.GetBalance()
-			//vbd.bankKeeper.(*banktypes.)
-
-			/*account := vbd.accountKeeper.GetAccount(ctx, addr)
-			log.Println("account: ", account)*/
-			//params := banktypes.NewQueryAllBalancesRequest(addr, nil)
-			//clientCtx, err := client.GetClientQueryContext(ctx)
-
-			//bankClient := banktypes.NewQueryClient(ctx)
-			//res, err := banktypes.AllBalances(ctx, params)
 
 			data := types.UgdVesting()
 			log.Println("data: ", data)

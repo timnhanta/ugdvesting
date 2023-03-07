@@ -176,7 +176,3 @@ func CreateCosmosKey(ugdAddress string) sdk.AccAddress {
 
 	return addr
 }
-
-func getUnvestedAmount() (int64, error) {
-	return 0, nil
-}
