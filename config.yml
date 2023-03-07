@@ -1,10 +1,12 @@
 version: 1
 accounts:
 - name: alice
+  mnemonic: melt table child eagle often town scrub dog true pen dignity vintage giant rural note develop toe viable thank glow elder jazz tomato twice
   coins:
   - 20000token
   - 200000000stake
 - name: bob
+  mnemonic: recipe nothing scrub code cheese blossom unknown gadget diary hollow copper top menu dismiss ankle absurd below subject opinion make blast seek stone wait
   coins:
   - 10000token
   - 100000000stake
