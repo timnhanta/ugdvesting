@@ -4,3 +4,11 @@ release/
 .idea/
 .vscode/
 .DS_Store
+
+#tests
+app_ante.log
+period.json
+vesting.json
+vesting_old.json
+alice/
+bob/
