@@ -3,7 +3,7 @@ accounts:
 - name: alice
   mnemonic: melt table child eagle often town scrub dog true pen dignity vintage giant rural note develop toe viable thank glow elder jazz tomato twice
   coins:
-  - 20000ugd
+  - 20000000000000000000000ugd
   - 200000000stake
 - name: bob
   mnemonic: recipe nothing scrub code cheese blossom unknown gadget diary hollow copper top menu dismiss ankle absurd below subject opinion make blast seek stone wait
