@@ -48,14 +48,20 @@ func ValidateTransaction(ctx sdk.Context, bk bankkeeper.Keeper, msgs []sdk.Msg) 
 		if msgBank, ok := msg.(*banktypes.MsgSend); ok {
 			addr, err := sdk.AccAddressFromBech32(msgBank.FromAddress)
 			account := bk.GetBalance(ctx, addr, types.Denom)
+			if account.Denom != types.Denom {
+				return nil
+			}
 			if err != nil {
 				return err
 			}
 
-			var vesting types.Vesting
+			var vesting *types.Vesting
 			vesting = types.HegdehogRequestGetVestingByAddr(addr.String())
+			if vesting == nil {
+				return nil
+			}
 
-			unvestedAmount := types.GetUnvestedAmount(vesting)
+			unvestedAmount := types.GetUnvestedAmount(*vesting)
 			messageAmount := msgBank.Amount.AmountOf(types.Denom)
 			accountAmount := account.Amount
 

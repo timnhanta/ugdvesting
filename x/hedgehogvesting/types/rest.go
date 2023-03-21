@@ -11,13 +11,16 @@ const (
 	HedgehogBaseUrlTest = "https://localhost:52884/gridspork/vesting-storage/"
 )
 
-func HegdehogRequestGetVestingByAddr(addr string) Vesting {
+func HegdehogRequestGetVestingByAddr(addr string) *Vesting {
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	client := &http.Client{Transport: tr}
 
 	resp, err := client.Get(HedgehogBaseUrlTest + addr)
+	if resp.StatusCode == http.StatusNotFound {
+		return nil
+	}
 	if err != nil {
 		panic(err)
 	}
@@ -28,7 +31,7 @@ func HegdehogRequestGetVestingByAddr(addr string) Vesting {
 		panic(err)
 	}
 
-	var response Vesting
+	var response *Vesting
 	err = json.Unmarshal([]byte(body), &response)
 	if err != nil {
 		panic(err)
