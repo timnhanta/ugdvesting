@@ -8,16 +8,31 @@ accounts:
 - name: bob
   mnemonic: recipe nothing scrub code cheese blossom unknown gadget diary hollow copper top menu dismiss ankle absurd below subject opinion make blast seek stone wait
   coins:
-  - 10000ugd
+  - 20000000000000000000000ugd
   - 100000000stake
+- name: cindy
+  mnemonic: exit holiday hire ring clip find gasp adapt narrow excuse chest surge marine april donkey call shock garage sheriff endorse urban target metal cousin  
+  coins:
+  - 20000token
+  - 200000000stake
+  - 20000000000000000000000ugd
+- name: david
+  mnemonic: doll slot daring observe erode beyond truly flat code retreat utility reduce front hobby side current expand mix rich fade quiz skull ketchup rally
+  coins:
+  - 10000token
+  - 100000000stake
+  - 20000000000000000000000ugd
 client:
   openapi:
     path: docs/static/openapi.yml
 faucet:
-  name: bob
+  name: david
   coins:
   - 5token
   - 100000stake
 validators:
 - name: alice
   bonded: 100000000stake
+  config:
+    p2p:
+      seeds: "ec4a2a3ff1349a2e9c0e4bf39bd04c2474c1a46b@172.21.0.2:27658"
