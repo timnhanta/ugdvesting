@@ -18,6 +18,20 @@ faucet:
   coins:
   - 5token
   - 100000stake
+  host: 127.0.100.1:4500
 validators:
 - name: alice
   bonded: 100000000stake
+  app:
+    api:
+      address: 127.0.100.1:1317
+    grpc:
+      address: 127.0.100.1:16692
+    grpc-web:
+      address: 127.0.100.1:16693
+  config:
+    p2p:
+      laddr: 127.0.100.1:26658
+    rpc:
+      laddr: 127.0.100.1:26657
+      pprof_laddr: 127.0.100.1:6661
