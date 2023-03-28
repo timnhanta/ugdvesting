@@ -3,7 +3,6 @@ module github.com/timnhanta/ugdvesting
 go 1.18
 
 require (
-	cosmossdk.io/math v1.0.0-beta.3
 	github.com/cosmos/cosmos-sdk v0.46.7
 	github.com/cosmos/ibc-go/v6 v6.1.0
 	github.com/golang/protobuf v1.5.3
@@ -18,6 +17,8 @@ require (
 	github.com/tendermint/tendermint v0.34.24
 	github.com/tendermint/tm-db v0.6.7
 )
+
+require cosmossdk.io/math v1.0.0-beta.3 // indirect
 
 require (
 	cloud.google.com/go v0.107.0 // indirect
@@ -124,7 +125,6 @@ require (
 	github.com/rs/cors v1.8.2 // indirect
 	github.com/rs/zerolog v1.27.0 // indirect
 	github.com/sasha-s/go-deadlock v0.3.1 // indirect
-	github.com/sosodev/duration v1.0.1
 	github.com/spf13/afero v1.9.2 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/viper v1.14.0 // indirect
